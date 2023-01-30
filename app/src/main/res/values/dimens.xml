@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_Date">5dp</dimen>
+    <dimen name="text_size_dates">13sp</dimen>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="330dp"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#5f5b57"
+        app:cardCornerRadius="9dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvCreatedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_Date"
+                android:layout_marginTop="@dimen/margin_Date"
+                android:layout_marginEnd="@dimen/margin_Date"
+                android:layout_marginBottom="@dimen/margin_Date"
+                android:text="Created Date"
+                android:textColor="@color/dull_white"
+                android:textSize="@dimen/text_size_dates" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="title"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tvUpdatedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/margin_Date"
+                android:layout_marginTop="@dimen/margin_Date"
+                android:layout_marginEnd="@dimen/margin_Date"
+                android:layout_marginBottom="@dimen/margin_Date"
+                android:text="Updated Date"
+                android:textColor="@color/dull_white"
+                android:textSize="@dimen/text_size_dates" />
+
+            <ImageView
+                android:id="@+id/ivPostImages"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@+id/tvTitle"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_launcher_background" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
