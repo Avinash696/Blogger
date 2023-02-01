@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.blogger.data.Constant
 import com.example.blogger.data.Repositary
-import com.example.blogger.data.blogModels.blogModel
+import com.example.blogger.blogModels.blogModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class BlogViewModel(val repositary: Repositary) : ViewModel() {
+class BlogViewModel(private val repositary: Repositary) : ViewModel() {
 
     init {
         GlobalScope.launch {

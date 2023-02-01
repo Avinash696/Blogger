@@ -1,4 +1,4 @@
-package com.example.blogger.data.blogModels
+package com.example.blogger.blogModels
 
 import java.io.Serializable
 

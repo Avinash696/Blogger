@@ -1,22 +1,42 @@
 package com.example.blogger.data
 
+import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.blogger.data.blogModels.blogModel
+import androidx.room.Dao
+import com.example.blogger.blogModels.blogModel
+import com.example.blogger.database.DaoInterface
+import com.example.blogger.database.DatabaseModel
+import com.example.blogger.database.ItemDatabase
+import com.example.blogger.utils.InternetConnection
 
-class Repositary(private val blogService: BlogService) {
+class Repositary(
+    private val context: Context,
+    private val blogService: BlogService,
+    private val database: ItemDatabase
+) {
     private val TAG = "Repositary"
     private var blogMutableLiveData = MutableLiveData<blogModel>()
-    val blogLiveData = blogMutableLiveData
+    val blogLiveData: LiveData<blogModel> = blogMutableLiveData
 
     suspend fun getAllBlogRepositary(key: String) {
-//        val result = blogService.getBlog(key)
-        val result = blogService.getBlog()
-        if (result.isSuccessful) {
-            blogMutableLiveData.postValue(result.body())
-            Log.d(TAG, "Success: " + result.body())
+        if (InternetConnection.isInternetAvailable(context)) {
+            val result = blogService.getBlog(key)
+            if (result.isSuccessful) {
+                blogMutableLiveData.postValue(result.body())
+                database.itemDao().addItems(result.body()!!.items)
+                Log.d(TAG, "with internet : ${result.body()}")
+            }
         } else {
-            Log.d(TAG, "Error: " + result)
+            // no internet
+            blogMutableLiveData.postValue(
+                blogModel(
+                    "customTag", database.itemDao().getItems(), "customKind"
+                )
+            )
+            Log.d(TAG, "no internet : $blogMutableLiveData")
         }
+//        val result = blogService.getBlog(key)
     }
 }

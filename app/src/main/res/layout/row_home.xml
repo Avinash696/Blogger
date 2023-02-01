@@ -5,16 +5,19 @@
     <data>
 
     </data>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
-        android:layout_width="330dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_margin="10dp"
         android:padding="10dp"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true"
         app:cardBackgroundColor="#5f5b57"
-        app:cardCornerRadius="9dp">
+        app:cardCornerRadius="9dp"
+        android:layout_centerInParent="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -64,4 +67,5 @@
                 android:src="@drawable/ic_launcher_background" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+</RelativeLayout>
 </layout>

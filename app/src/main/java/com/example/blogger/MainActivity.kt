@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blogger.adapter.AdapterHome
 import com.example.blogger.data.Repositary
-import com.example.blogger.data.blogModels.blogModel
+import com.example.blogger.blogModels.blogModel
 import com.example.blogger.viewModels.BlogViewModel
 import com.example.blogger.viewModels.BlogViewModelFactory
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,17 +52,32 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(this, BlogViewModelFactory(repositary))[BlogViewModel::class.java]
 
         blogViewModel.allBlogLiveData.observe(this) {
-            Log.d(TAG, "onCreate: $it")
+//            Log.d(TAG, "onCreate: $it")
             recyclerViewSet(it)
         }
+        getFCMToken()
+
     }
 
     private fun recyclerViewSet(data: blogModel) {
 
         val arrayList = ArrayList<blogModel>()
         arrayList.addAll(listOf(data))
+        Log.d(TAG, "getRey: $arrayList")
         val adapter = AdapterHome(this, arrayList)
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rv.adapter = adapter
+    }
+
+    private fun getFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (it.isSuccessful) {
+                val token = it.result
+                Log.d("FCM78", "getFCMToken: $token")
+                return@addOnCompleteListener
+            }
+            val token = it.result
+            Log.d("FCM78", "getFCMToken: $token")
+        }
     }
 }

@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogger.R
-import com.example.blogger.data.blogModels.blogModel
+import com.example.blogger.blogModels.blogModel
 import com.example.blogger.databinding.RowHomeBinding
 import com.example.blogger.ui.activity.DetailActivity
 import com.google.gson.Gson
@@ -21,8 +21,8 @@ class AdapterHome(private val context: Context, private val postArrayData: Array
     lateinit var binding: RowHomeBinding
 
     class CustomViewHolder(binding: RowHomeBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(holder: CustomViewHolder) {
-        }
+//        fun bind(holder: CustomViewHolder) {
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -38,9 +38,9 @@ class AdapterHome(private val context: Context, private val postArrayData: Array
 
         holder.itemView.findViewById<TextView>(R.id.tvTitle).text = allItems[position].title
         holder.itemView.findViewById<TextView>(R.id.tvCreatedDate).text =
-            "Published" + allItems[position].published
+            "Published -" + (allItems[position].published).substring(0,10)
         holder.itemView.findViewById<TextView>(R.id.tvUpdatedDate).text =
-            "Created " + allItems[position].updated
+            "Created -" + (allItems[position].updated).substring(0,11)
         //on item click
         Log.d("rawat", "onBindViewHolder: ${getPicImage(allItems[position].content)}")
         holder.itemView.setOnClickListener {
