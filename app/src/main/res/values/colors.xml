@@ -14,9 +14,13 @@
     <color name="title">#98ff98</color>
     <color name="text_title">#ad4004</color>
     <color name="text_paragraph">#938376</color>
-    <color name="card_color">#fda172</color>
-    <color name="dull_white">#ddc9d4</color>
+<!--    <color name="card_color">#fda172</color>-->
+    <color name="card_color">#93C6E7</color>
+    <color name="dull_white">#567189</color>
     <color name="light_black">#5f5b57</color>
     <color name="dark_black">#201E1D</color>
+<!--    <color name="background">#B6B2AE</color>-->
+    <color name="background">#B9F3FC</color>
+    <color name="green">#66BB6A</color>
 
 </resources>

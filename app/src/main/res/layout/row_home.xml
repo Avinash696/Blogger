@@ -15,7 +15,7 @@
         android:padding="10dp"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="#5f5b57"
+        app:cardBackgroundColor="@color/card_color"
         app:cardCornerRadius="9dp"
         android:layout_centerInParent="true">
 
