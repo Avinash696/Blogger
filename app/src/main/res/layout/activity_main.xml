@@ -18,12 +18,14 @@
         android:textColor="@color/black"
         android:textSize="17sp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivStatus"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="6dp"
-        android:src="@drawable/circle" />
+        android:src="@drawable/circle"
+        tools:ignore="MissingClass" />
+
     <TextView
         android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
@@ -39,7 +41,7 @@
         android:layout_below="@+id/textView4"
         android:layout_marginTop="20dp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView4"
         android:layout_width="53dp"
         android:layout_height="43dp"
@@ -50,4 +52,12 @@
         android:layout_marginBottom="5dp"
         android:src="@drawable/profile"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/imageView4"
+        android:text="TextView" />
 </RelativeLayout>

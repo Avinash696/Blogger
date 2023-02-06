@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.blogger.MainActivity
 import com.example.blogger.R
+import com.example.blogger.ui.activity.ui.login.LoginActivity
 import com.google.firebase.messaging.FirebaseMessaging
 
 class SplashActivity : AppCompatActivity() {
@@ -29,9 +30,9 @@ class SplashActivity : AppCompatActivity() {
         ivSplash = findViewById(R.id.imageView3)
 
         ivSplash.alpha = 0f
-        ivSplash.animate().duration = 1000
+        ivSplash.animate().duration = 3000
         ivSplash.animate().alpha(1f).withEndAction {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

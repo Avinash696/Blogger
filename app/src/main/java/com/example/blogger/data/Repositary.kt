@@ -22,7 +22,7 @@ class Repositary(
 
     suspend fun getAllBlogRepositary(key: String) {
         if (InternetConnection.isInternetAvailable(context)) {
-            val result = blogService.getBlog(key)
+            val result = blogService.getBlog()
             if (result.isSuccessful) {
                 blogMutableLiveData.postValue(result.body())
                 database.itemDao().addItems(result.body()!!.items)
