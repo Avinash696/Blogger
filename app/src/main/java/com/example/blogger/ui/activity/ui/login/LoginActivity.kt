@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
     private val TAG = "loginTag"
@@ -23,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     var time = 4
     lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var gso: GoogleSignInOptions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,27 +33,29 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val gso: GoogleSignInOptions =
+        gso =
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
+
         binding.googleButton?.setOnClickListener {
             signIn()
         }
-//        val hander = Handler()
-//        hander.postDelayed(
-//            kotlinx.coroutines.Runnable {
-//                time -= 1
-//                binding.tvAutoLogin!!.text = (time).toString()
-//                startActivity(Intent(this, MainActivity::class.java))
-//            }, 4000
-//        )
+        binding.logoutBtn?.setOnClickListener {
+            signOut()
+        }
+    }
+
+    private fun signOut() {
+        FirebaseAuth.getInstance().signOut()
     }
 
 
     private fun signIn() {
+
+
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
 
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -60,10 +64,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             Log.d(TAG, "onActivityResult: ${data}")
             handleSignInResult(task)
@@ -84,13 +85,14 @@ class LoginActivity : AppCompatActivity() {
                 val personPhoto: Uri? = acct.photoUrl
 
                 val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 Log.d(
                     TAG,
-                    "handleSignInResult:  +$personPhoto"
+                    "handleSignInResult:  $personPhoto"
                 )
 //                intent.putExtra("googleCred",googleSignModel(personGivenName, personPhoto))
-                intent.putExtra("googleName",personGivenName)
-                intent.putExtra("googleImg",personPhoto.toString())
+                intent.putExtra("googleName", personGivenName)
+                intent.putExtra("googleImg", personPhoto.toString())
                 startActivity(intent)
 
             }

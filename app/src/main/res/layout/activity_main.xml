@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/ivStatus"
-        android:text="Status"/>
+        android:text="Status" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMain"
@@ -60,4 +60,17 @@
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@id/imageView4"
         android:text="TextView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:contentDescription="Logout"
+        app:srcCompat="@drawable/icon_logout"
+        android:focusable="true" />
 </RelativeLayout>
