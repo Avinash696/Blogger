@@ -1,7 +1,7 @@
 # blogger![1]
 
 For Now check App - https://drive.google.com/file/d/1stlvdp1k-828J_Ex--8Z2L-8cMosOQDh/view?usp=share_link 
-If U face any issue at authenticating . click earh icon on login page for offline entry .
+If U face any issue at authenticating . click on earth  icon on login page for offline entry .
 Later it will be uploaded on playstore .
 
 
