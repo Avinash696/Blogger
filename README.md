@@ -1,5 +1,9 @@
 # blogger![1]
 
+For Now check App - https://drive.google.com/file/d/1stlvdp1k-828J_Ex--8Z2L-8cMosOQDh/view?usp=share_link 
+If U face any issue at authenticating . click earh icon on login page for offline entry .
+Later it will be uploaded on playstore .
+
 
 ![1](https://user-images.githubusercontent.com/82675874/218376627-69c59e3c-c8b6-4db9-8da0-7d655d8a568f.jpg)
 ![2](https://user-images.githubusercontent.com/82675874/218376631-48243a1b-d553-4d70-8d33-be6730e8be4c.jpg)
